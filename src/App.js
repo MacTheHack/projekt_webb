@@ -7,7 +7,22 @@ function Header(header) {
 }
 
 function Title(text){
-  return (<h2 className="display-4">{text.welcomeText}</h2>)
+  return (<h2 className="display-4">{text.welcomeText}</h2>);
+}
+
+function CreateForm(){
+  return (
+    <form>
+      <div className="form-group">
+        <label for="inputText">Text to convert:</label>
+        <textarea type="text" className="form-control" id="inputText" placeholder="Text to convert"></textarea>
+      </div>
+    </form>
+  );
+}
+
+function CreateButton(button){
+  return( <button className="btn btn-info" id={button.id}>{button.text}</button>)
 }
 
 function App() {
@@ -15,7 +30,10 @@ function App() {
         <div className="App">
             <Header value={"Projekt"}/>
             <Title welcomeText={"Become a Pirate!"}/>
+            <CreateForm/>
+            <CreateButton id={"convert"} text={"Convert"}/>
         </div>
+
     );
 }
 
