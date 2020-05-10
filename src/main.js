@@ -16,6 +16,6 @@ $(document).ready(function() {
         event.preventDefault();
         var input = $("#inputText").val();
         var translation = requestToAPI(input);
-        $("#translation").append(translation);
+        $("#translation").removeClass("d-none").append(translation);
     });
 });
