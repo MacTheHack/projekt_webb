@@ -6,10 +6,15 @@ function Header(header) {
     return (<h1 class="d-4">{header.value}</h1>);
 }
 
+function Title(text){
+  return (<h2 class="display-4">{text.welcomeText}</h2>)
+}
+
 function App() {
     return (
         <div className="App">
             <Header value={"Projekt"}/>
+            <Title welcomeText={"Become a Pirate!"}/>
         </div>
     );
 }
