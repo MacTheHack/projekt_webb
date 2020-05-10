@@ -3,11 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 
 function Header(header) {
-    return (<h1 class="d-4">{header.value}</h1>);
+    return (<h1 className="d-4">{header.value}</h1>);
 }
 
 function Title(text){
-  return (<h2 class="display-4">{text.welcomeText}</h2>)
+  return (<h2 className="display-4">{text.welcomeText}</h2>)
 }
 
 function App() {
