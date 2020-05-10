@@ -2,10 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function Header(header) {
-    return (<h1 className="d-4">{header.value}</h1>);
-}
-
 function Title(text){
   return (<h2 className="display-4">{text.welcomeText}</h2>);
 }
@@ -22,16 +18,17 @@ function CreateForm(){
 }
 
 function CreateButton(button){
-  return( <button className="btn btn-info" id={button.id}>{button.text}</button>)
+  return( <button className="btn btn-info btn-block" id={button.id}>{button.text}</button>)
 }
 
 function App() {
     return (
         <div className="App">
-            <Header value={"Projekt"}/>
             <Title welcomeText={"Become a Pirate!"}/>
-            <CreateForm/>
-            <CreateButton id={"convert"} text={"Convert"}/>
+            <div className="container">
+                <CreateForm/>
+                <CreateButton id={"convert"} text={"Convert"}/>
+            </div>
         </div>
 
     );
