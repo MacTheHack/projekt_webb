@@ -12,7 +12,7 @@ function Title(text){
 
 function CreateForm(){
   return (
-    <form>
+    <form className="text-left">
       <div className="form-group">
         <label for="inputText">Text to convert:</label>
         <textarea type="text" className="form-control" id="inputText" placeholder="Text to convert"></textarea>
