@@ -17,14 +17,14 @@ function CreateForm(){
         <label for="inputText">Text to convert:</label>
         <textarea type="text" className="form-control" id="inputText" placeholder="Text to convert"></textarea>
         <CreateButton id={"convert"} text={"Convert"}/>
-        <div id="translation"></div>
+        <div id="translation" className="border border-dark rounded p-2 d-none"></div>
       </div>
     </form>
   );
 }
 
 function CreateButton(button){
-  return( <button className="btn btn-info btn-block mt-3" id={button.id}>{button.text}</button>)
+  return( <button className="btn btn-info btn-block my-3" id={button.id}>{button.text}</button>)
 }
 
 function App() {
