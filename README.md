@@ -1,3 +1,12 @@
+# Become A Pirate!
+
+## Om projektet
+I detta projekt har vi gjort en webbapplikation som gör det mögligt för användaren att skriva in en text och få den översatt till ”piratspråk”. Dett är gjort med hjälp av FunTranslations ” Pirate translator API”.  Som användare kan man också spara sina favoritöversättningar.
+
+## Ramverk
+Vi har valt React eftersom vi anser att det var det ramverket som passade oss bäst. Vi ville ha ett ramverk där det var enkelt att skapa komponenter för vår design.  
+
+======
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
