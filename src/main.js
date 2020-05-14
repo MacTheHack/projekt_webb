@@ -1,7 +1,7 @@
 import $ from 'jquery';
 const API_URL = "https://api.funtranslations.com/translate/pirate.json?text=";
 
-let quotes = [];
+var quotes = [];
 function requestToAPI(text) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", API_URL + text, false );
@@ -12,9 +12,20 @@ function requestToAPI(text) {
     return json.contents.translated;
 }
 
+function displayQuotes(){
+    var jsonQuotes = localStorage.getItem("quotes");
+    quotes = JSON.parse(jsonQuotes);
+    console.log(quotes);
+    // for(var i=0; i<quotes.length; i++){
+    //     var listitem = $("<li></li>").text(quotes[i]);
+    //     $("#list").append(listitem);
+    //     console.log(quotes[i]);
+    // }
+}
+
 function saveQuote(){
-  var text =  $("#translation").text();
-  quotes.push(text);
+  var text = { text: $("#translation").text()};
+  quotes.push(JSON.stringify(text));
   localStorage.setItem("quotes", quotes);
 }
 
@@ -30,4 +41,5 @@ $(document).ready(function() {
         }
     });
     $('#saveQuote').click(saveQuote);
+    $('#displayQuotes').click(displayQuotes);
 });

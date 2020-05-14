@@ -16,7 +16,7 @@ function CreateForm(){
       <div className="form-group">
         <label for="inputText">Text to convert:</label>
         <textarea type="text" className="form-control" id="inputText" placeholder="Text to convert"></textarea>
-        <CreateButton id={"convert"} text={"Convert"}/>
+        <CreateButton id={"convert"} text={"Convert"} />
         <div id="translation" className="border border-dark rounded p-2 d-none"></div>
       </div>
     </form>
@@ -24,11 +24,15 @@ function CreateForm(){
 }
 
 function CreateOutsideButton(button){
-  return(<button className="btn btn-primary float-left " id={button.id}>{button.text}</button>)
+  return(<button className="btn btn-primary" style={button.style}   id={button.id}>{button.text}</button>)
 }
 
 function CreateButton(button){
-  return( <button className="btn btn-info btn-block my-3" id={button.id}>{button.text}</button>)
+  return( <button className="btn btn-info btn-block my-3" style={button.style} id={button.id}>{button.text}</button>)
+}
+
+function CreateDisplayDiv(div){
+  return(<ul className="list-group" style={div.style} id={div.id}></ul>)
 }
 
 function App() {
@@ -38,11 +42,12 @@ function App() {
             <LeadText text={"Take the first step to become a pirate.This webiste helps you to convert plain old boring English to cool pirate language"}/>
             <div className="container">
                 <CreateForm/>
-                <CreateOutsideButton id={"saveQuote"} text={"Save this quote"}/>
-            </div>
-              
-        </div>
+                <CreateOutsideButton style={{float:'left'}} id={"saveQuote"} text={"Save this quote"}/>
+                <CreateOutsideButton style={{float:'right'}} id={"displayQuotes"} text={"Display your quotes"}/>
+                <CreateDisplayDiv style={{float:'right'}} id={"quoteList"}/>
 
+            </div>
+        </div>
     );
 }
 
