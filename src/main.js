@@ -15,7 +15,12 @@ $(document).ready(function() {
     $("#convert").on("click", function(event) {
         event.preventDefault();
         var input = $("#inputText").val();
-        var translation = requestToAPI(input);
-        $("#translation").removeClass("d-none").append(translation);
+        if (input.length >= 1){
+          var translation = requestToAPI(input);
+          $("#translation").removeClass("d-none").append(translation);
+        } else{
+          alert("No input given..")
+        }
+
     });
 });
