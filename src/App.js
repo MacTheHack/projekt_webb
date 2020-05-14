@@ -23,6 +23,10 @@ function CreateForm(){
   );
 }
 
+function CreateOutsideButton(button){
+  return(<button className="btn btn-primary float-left " id={button.id}>{button.text}</button>)
+}
+
 function CreateButton(button){
   return( <button className="btn btn-info btn-block my-3" id={button.id}>{button.text}</button>)
 }
@@ -34,8 +38,9 @@ function App() {
             <LeadText text={"Take the first step to become a pirate.This webiste helps you to convert plain old boring English to cool pirate language"}/>
             <div className="container">
                 <CreateForm/>
-
+                <CreateOutsideButton id={"saveQuote"} text={"Save this quote"}/>
             </div>
+              
         </div>
 
     );

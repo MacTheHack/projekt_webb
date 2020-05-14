@@ -17,7 +17,7 @@ $(document).ready(function() {
         var input = $("#inputText").val();
         if (input.length >= 1){
           var translation = requestToAPI(input);
-          $("#translation").removeClass("d-none").append(translation);
+          $("#translation").removeClass("d-none").text(translation);
         } else{
           alert("No input given..")
         }
