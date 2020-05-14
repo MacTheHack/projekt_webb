@@ -1,7 +1,7 @@
 import $ from 'jquery';
 const API_URL = "https://api.funtranslations.com/translate/pirate.json?text=";
 
-
+let quotes = [];
 function requestToAPI(text) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", API_URL + text, false );
@@ -10,6 +10,12 @@ function requestToAPI(text) {
     var json = JSON.parse(xmlHttp.responseText);
 
     return json.contents.translated;
+}
+
+function saveQuote(){
+  var text =  $("#translation").text();
+  quotes.push(text);
+  localStorage.setItem("quotes", quotes);
 }
 
 $(document).ready(function() {
@@ -22,6 +28,6 @@ $(document).ready(function() {
         } else{
           alert("No input given..")
         }
-
     });
+    $('#saveQuote').click(saveQuote);
 });
