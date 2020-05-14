@@ -5,6 +5,7 @@ const API_URL = "https://api.funtranslations.com/translate/pirate.json?text=";
 function requestToAPI(text) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", API_URL + text, false );
+    xmlHttp.setRequestHeader("X-Funtranslations-Api-Secret", "1IKXHDGkGHDGTTw6utk3dgeF");
     xmlHttp.send( null );
     var json = JSON.parse(xmlHttp.responseText);
 
