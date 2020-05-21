@@ -31,10 +31,19 @@ function CreateButton(button){
   return( <button className="btn btn-info btn-block my-3" style={button.style} id={button.id}>{button.text}</button>)
 }
 
-function CreateDisplayDiv(div){
-  return(<ul className="list-group" style={div.style} id={div.id}></ul>)
+function CreateDisplayDiv(props){
+    const items = props.items;
+    const listItems = items.map((item) =>
+        <ListItem key={item.toString()} value={item} />
+    );
+    return(<ul className="list-group" style={props.style} id={props.id}>{listItems}</ul>)
 }
 
+function ListItem(props) {
+  return <li>{props.value}</li>;
+}
+
+const numbers = [1, 2, 3, 4, 5];
 function App() {
     return (
         <div className="App">
@@ -44,7 +53,7 @@ function App() {
                 <CreateForm/>
                 <CreateOutsideButton style={{float:'left'}} id={"saveQuote"} text={"Save this quote"}/>
                 <CreateOutsideButton style={{float:'right'}} id={"displayQuotes"} text={"Display your quotes"}/>
-                <CreateDisplayDiv style={{float:'right'}} id={"quoteList"}/>
+                <CreateDisplayDiv style={{float:'right'}} id={"quoteList"} items={numbers}/>
 
             </div>
         </div>
