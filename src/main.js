@@ -26,14 +26,13 @@ function displayQuotes(){
 }
 
 function saveQuote(){
-  quotes =  JSON.parse(localStorage.getItem('quotes'));
-  console.log(quotes);
-  var text = { text: $("#translation").text()};
-  quotes.push(text);
-
-  console.log(quotes);
-
-  localStorage.setItem("quotes", JSON.stringify(quotes));
+    var text = $("#translation").text();
+    if(text.length>0){
+        if(localStorage.getItem('quotes') != null) quotes =  JSON.parse(localStorage.getItem('quotes'));
+        var text = { text: text};
+        quotes.push(text);
+        localStorage.setItem("quotes", JSON.stringify(quotes));
+    }
 }
 
 $(document).ready(function() {
