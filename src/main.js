@@ -13,19 +13,26 @@ function requestToAPI(text) {
 }
 
 function displayQuotes(){
-    var jsonQuotes = localStorage.getItem("quotes");
-    quotes = JSON.parse(jsonQuotes);
-    console.log(quotes);
-     for(var i=0; i<quotes.length; i++){
-       var listitem = $("<li></li>").text(quotes[i]);
-        $("#list").append(listitem);
-       console.log(quotes[i]);
-    }
+    // var jsonQuotes = localStorage.getItem("quotes");
+    // quotes = JSON.parse(jsonQuotes);
+    // console.log(quotes);
+    //  for(var i=0; i<quotes.length; i++){
+    //    var listitem = $("<li></li>").text(quotes[i]);
+    //     $("#list").append(listitem);
+    //    console.log(quotes[i]);
+    // }
+     $("#quoteList").removeClass("d-none")
+
 }
 
 function saveQuote(){
+  quotes =  JSON.parse(localStorage.getItem('quotes'));
+  console.log(quotes);
   var text = { text: $("#translation").text()};
   quotes.push(text);
+
+  console.log(quotes);
+
   localStorage.setItem("quotes", JSON.stringify(quotes));
 }
 
