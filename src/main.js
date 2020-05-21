@@ -12,34 +12,38 @@ function requestToAPI(text) {
     return json.contents.translated;
 }
 
+function convert(event) {
+    event.preventDefault();
+    var input = $("#inputText").val();
+    if (input.length >= 1){
+        var translation = requestToAPI(input);
+        $("#translation").removeClass("d-none").text(translation);
+    } else{
+        alert("No input given..")
+    }
+}
+
 function displayQuotes(){
     var jsonQuotes = localStorage.getItem("quotes");
     quotes = JSON.parse(jsonQuotes);
-    console.log(quotes);
-    // for(var i=0; i<quotes.length; i++){
-    //     var listitem = $("<li></li>").text(quotes[i]);
-    //     $("#list").append(listitem);
-    //     console.log(quotes[i]);
-    // }
+    console.log(quotes.length);
+    console.log(jsonQuotes);
+    for(var i=0; i<quotes.length; i++){
+        var listitem = $("<li></li>").text(quotes[i].text);
+        $("#quoteList").append(listitem);
+        console.log(quotes[i]);
+    }
 }
 
 function saveQuote(){
-  var text = { text: $("#translation").text()};
-  quotes.push(JSON.stringify(text));
-  localStorage.setItem("quotes", quotes);
+    var text = $("#translation").text();
+    var item = { text: text};
+    quotes.push(item);
+    localStorage.setItem("quotes", JSON.stringify(quotes));
 }
 
 $(document).ready(function() {
-    $("#convert").on("click", function(event) {
-        event.preventDefault();
-        var input = $("#inputText").val();
-        if (input.length >= 1){
-          var translation = requestToAPI(input);
-          $("#translation").removeClass("d-none").text(translation);
-        } else{
-          alert("No input given..")
-        }
-    });
+    $("#convert").on("click", convert);
     $('#saveQuote').click(saveQuote);
     $('#displayQuotes').click(displayQuotes);
 });
