@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 function Title(text){
   return (<h2 className="display-4">{text.welcomeText}</h2>);
@@ -32,18 +33,18 @@ function CreateButton(button){
 }
 
 function CreateDisplayDiv(props){
-    const items = props.items;
+    const items = JSON.parse(props.items);
     const listItems = items.map((item) =>
-        <ListItem key={item.toString()} value={item} />
+        <ListItem value={item.text} />
     );
-    return(<ul className="list-group" style={props.style} id={props.id}>{listItems}</ul>)
+    return(<ul className="list-group d-none" style={props.style} id={props.id}>{listItems}</ul>)
 }
 
 function ListItem(props) {
   return <li>{props.value}</li>;
 }
 
-const numbers = [1, 2, 3, 4, 5];
+var items = reactLocalStorage.get('quotes', true);
 function App() {
     return (
         <div className="App">
@@ -53,7 +54,7 @@ function App() {
                 <CreateForm/>
                 <CreateOutsideButton style={{float:'left'}} id={"saveQuote"} text={"Save this quote"}/>
                 <CreateOutsideButton style={{float:'right'}} id={"displayQuotes"} text={"Display your quotes"}/>
-                <CreateDisplayDiv style={{float:'right'}} id={"quoteList"} items={numbers}/>
+                <CreateDisplayDiv style={{float:'right'}}  id={"quoteList"} items={items}/>
 
             </div>
         </div>
