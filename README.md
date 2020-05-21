@@ -1,12 +1,13 @@
 # Become A Pirate!
 
 ## Om projektet
-I detta projekt har vi gjort en webbapplikation som gör det mögligt för användaren att skriva in en text och få den översatt till ”piratspråk”. Dett är gjort med hjälp av FunTranslations ” Pirate translator API”.  Som användare kan man också spara sina favoritöversättningar.
+I detta projekt har vi gjort en webbapplikation som gör det mögligt för användaren att skriva in en text och få den översatt till ”piratspråk”. Detta är gjort med hjälp av FunTranslations ” Pirate translator API”.  Som användare kan man också spara sina favoritöversättningar, för att vissa sina vänner.
 
 ## Ramverk
-Vi har valt React eftersom vi anser att det var det ramverket som passade oss bäst. Vi ville ha ett ramverk där det var enkelt att skapa komponenter för vår design.  
+Vi har valt React eftersom vi anser att det var det ramverket som passade oss bäst. Vi ville ha ett ramverk där det var enkelt att skapa komponenter för vår design. React var det första ramverket vi tittade på, därefter när vi tittade på både Angular och View så kände vi inte att vi blev lika tilltalade av dessa ramverk. Vi båda har dessutom fått höra att react har varit och fortsätter att vara väldigt bra, samt att vi har fått information att detta är ett ramverk som använd av många företag i Malmö-området.
+Vi valde även att använda Bootstrap som css-ramverk eftersom vi tycker att det är lättast att använda och ser bäst ut.
 
-======
+---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
