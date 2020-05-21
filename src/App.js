@@ -14,7 +14,7 @@ function CreateForm(){
   return (
     <form className="text-left">
       <div className="form-group">
-        <label for="inputText">Text to convert:</label>
+        <label htmlFor="inputText">Text to convert:</label>
         <textarea type="text" className="form-control" id="inputText" placeholder="Text to convert"></textarea>
         <CreateButton id={"convert"} text={"Convert"} />
         <div id="translation" className="border border-dark rounded p-2 d-none"></div>

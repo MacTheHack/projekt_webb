@@ -16,17 +16,17 @@ function displayQuotes(){
     var jsonQuotes = localStorage.getItem("quotes");
     quotes = JSON.parse(jsonQuotes);
     console.log(quotes);
-    // for(var i=0; i<quotes.length; i++){
-    //     var listitem = $("<li></li>").text(quotes[i]);
-    //     $("#list").append(listitem);
-    //     console.log(quotes[i]);
-    // }
+     for(var i=0; i<quotes.length; i++){
+        var listitem = $("<li></li>").text(quotes[i]);
+        $("#list").append(listitem);
+       console.log(quotes[i]);
+    }
 }
 
 function saveQuote(){
   var text = { text: $("#translation").text()};
-  quotes.push(JSON.stringify(text));
-  localStorage.setItem("quotes", quotes);
+  quotes.push(text);
+  localStorage.setItem("quotes", JSON.stringify(quotes));
 }
 
 $(document).ready(function() {
