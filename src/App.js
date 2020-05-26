@@ -46,10 +46,18 @@ function ListItem(props) {
 
 function App() {
     var [items, setItems] = React.useState(JSON.parse(reactLocalStorage.get('quotes', null)));
+    var listShowing = false;
 
     const updateList = () => {
         setItems(JSON.parse(reactLocalStorage.get('quotes', null)));
     };
+
+    const showList = () => {
+        var element = document.getElementById("quoteList");
+        if(!listShowing) element.classList.remove("d-none");
+        else element.classList.add("d-none");
+        listShowing = !listShowing;
+    }
 
     return (
       <div className="App">
@@ -58,9 +66,10 @@ function App() {
           <div className="container">
               <CreateForm/>
               <CreateOutsideButton style={{float:'left'}} id={"saveQuote"} text={"Save this quote"} onClick={updateList}/>
-              <CreateOutsideButton style={{float:'right'}} id={"displayQuotes"} text={"Display your quotes"}/>
-              <CreateDisplayDiv style={{float:'right'}}  id={"quoteList"} items={items}/>
-
+              <CreateOutsideButton style={{float:'right'}} id={"displayQuotes"} text={"Toggle your quotes"} onClick={showList}/>
+              <div className="container mt-5">
+                <CreateDisplayDiv  id={"quoteList"} items={items}/>
+              </div>
           </div>
       </div>
     );
