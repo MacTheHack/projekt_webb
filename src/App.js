@@ -35,13 +35,13 @@ function CreateButton(button){
 
 function CreateDisplayDiv(props){
     var listItems = (props.items || []).map(item =>
-        <ListItem value={item.text} />
+        <ListItem key={item.id} value={item.text} />
     );
-    return(<ol className="list-group d-none" style={props.style} id={props.id}>{listItems}</ol>)
+    return(<ul className="list-group d-none" id={props.id}>{listItems}</ul>)
 }
 
 function ListItem(props) {
-    return <li>{props.value}</li>;
+    return <li className="list-group-item list-group-item-success">{props.value}</li>;
 }
 
 function App() {
@@ -68,7 +68,7 @@ function App() {
               <CreateOutsideButton style={{float:'left'}} id={"saveQuote"} text={"Save this quote"} onClick={updateList}/>
               <CreateOutsideButton style={{float:'right'}} id={"displayQuotes"} text={"Toggle your quotes"} onClick={showList}/>
               <div className="container mt-5">
-                <CreateDisplayDiv  id={"quoteList"} items={items}/>
+                <CreateDisplayDiv   id={"quoteList"} items={items}/>
               </div>
           </div>
       </div>

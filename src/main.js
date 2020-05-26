@@ -29,7 +29,11 @@ function saveQuote(){
     var text = $("#translation").text();
     if(text.length>0){
         if(localStorage.getItem('quotes') != null) quotes =  JSON.parse(localStorage.getItem('quotes'));
-        var text = { text: text};
+        var id = quotes.length + 1;
+        var text = {
+          id: id,
+          text: text
+        };
         quotes.push(text);
         localStorage.setItem("quotes", JSON.stringify(quotes));
     }
