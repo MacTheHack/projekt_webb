@@ -12,28 +12,11 @@ function requestToAPI(text) {
     return json.contents.translated;
 }
 
-// function displayQuotes(){
-//     // var jsonQuotes = localStorage.getItem("quotes");
-//     // quotes = JSON.parse(jsonQuotes);
-//     // console.log(quotes);
-//     //  for(var i=0; i<quotes.length; i++){
-//     //    var listitem = $("<li></li>").text(quotes[i]);
-//     //     $("#list").append(listitem);
-//     //    console.log(quotes[i]);
-//     // }
-//      $("#quoteList").removeClass("d-none")
-//
-// }
-
 function saveQuote(){
     var text = $("#translation").text();
     if(text.length>0){
         if(localStorage.getItem('quotes') != null) quotes =  JSON.parse(localStorage.getItem('quotes'));
-        var id = quotes.length + 1;
-        var text = {
-          id: id,
-          text: text
-        };
+        var text = { text: text};
         quotes.push(text);
         localStorage.setItem("quotes", JSON.stringify(quotes));
     }
@@ -51,5 +34,4 @@ $(document).ready(function() {
         }
     });
     $('#saveQuote').click(saveQuote);
-    //$('#displayQuotes').click(displayQuotes);
 });
