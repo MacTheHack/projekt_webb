@@ -65,12 +65,13 @@ function App() {
           <LeadText text={"Take the first step to become a pirate.This webiste helps you to convert plain old boring English to cool pirate language"}/>
           <div className="container">
               <CreateForm/>
-              <CreateOutsideButton style={{float:'left'}} id={"saveQuote"} text={"Save this quote"} onClick={updateList}/>
-              <CreateOutsideButton style={{float:'right'}} id={"displayQuotes"} text={"Toggle your quotes"} onClick={showList}/>
+              <CreateOutsideButton style={{margin:'10px'}} id={"saveQuote"} text={"Save this quote"} onClick={updateList}/>
+              <CreateOutsideButton style={{margin:'10px'}} id={"displayQuotes"} text={"Toggle your quotes"} onClick={showList}/>
               <div className="container mt-5">
-                <CreateDisplayDiv   id={"quoteList"} items={items}/>
+              <CreateDisplayDiv id={"quoteList"} items={items}/>
               </div>
           </div>
+
       </div>
     );
 }
