@@ -33,19 +33,39 @@ function CreateButton(button){
     return( <button className="btn btn-info btn-block my-3" style={button.style} id={button.id}>{button.text}</button>)
 }
 
-function CreateDisplayDiv(props){
-    var listItems = (props.items || []).map(item =>
-        <ListItem key={item.id} value={item.text} />
+class CreateDisplayDiv extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  handleDelete(text){
+    console.log(text);
+    let newQuoteList = this.props.items.filter(function(quote){
+      return quote.text != text;
+    });
+  }
+  render(){
+    var listItems = (this.props.items || []).map(item =>
+        <ListItem deleteQuote={this.handleDelete.bind(this)} key={item.id} value={item.text} />
     );
-    return(<ul className="list-group d-none" id={props.id}>{listItems}</ul>)
+    return(<ul className="list-group d-none" id={this.props.id}>{listItems}</ul>)
+  }
 }
 
-function ListItem(props) {
+class ListItem extends React.Component {
+  constructor(props){
+    super(props)
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(){
+    this.props.deleteQuote(this.props.value);
+  }
+  render(){
     return(
     <li className="list-group-item list-group-item-success">
-      {props.value}
-      <img src="img/delete.webp" width="25px"/>
+      {this.props.value}
+      <img src="img/delete.webp" onClick={this.handleClick} width="25px"/>
     </li>);
+  }
 }
 
 function App() {
