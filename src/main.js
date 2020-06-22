@@ -19,6 +19,7 @@ function saveQuote(){
         var text = { text: text};
         quotes.push(text);
         localStorage.setItem("quotes", JSON.stringify(quotes));
+
     }
 }
 
@@ -29,6 +30,7 @@ $(document).ready(function() {
         if (input.length >= 1){
           var translation = requestToAPI(input);
           $("#translation").removeClass("d-none").text(translation);
+          $("#inputText").val("");
         } else{
           alert("No input given..")
         }

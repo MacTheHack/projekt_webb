@@ -66,7 +66,7 @@ function App() {
           <div className="container">
               <CreateForm/>
               <CreateOutsideButton style={{margin:'10px'}} id={"saveQuote"} text={"Save this quote"} onClick={updateList}/>
-              <CreateOutsideButton style={{margin:'10px'}} id={"displayQuotes"} text={"Toggle your quotes"} onClick={showList}/>
+              <CreateOutsideButton style={{margin:'10px'}} id={"displayQuotes"} text={"Show your quotes"} onClick={showList}/>
               <div className="container mt-5">
               <CreateDisplayDiv id={"quoteList"} items={items}/>
               </div>
