@@ -44,7 +44,7 @@ function ListItem(props) {
     return(
     <li className="list-group-item list-group-item-success">
       {props.value}
-      <img src="img/delete.webp"/>
+      <img src="img/delete.webp" width="25px"/>
     </li>);
 }
 
