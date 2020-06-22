@@ -45,7 +45,7 @@ class CreateDisplayDiv extends React.Component {
   }
   render(){
     var listItems = (this.props.items || []).map(item =>
-        <ListItem deleteQuote={this.handleDelete.bind(this)} number={item.id} key={item.id} value={item.text} />
+        <ListItem deleteQuote={this.handleDelete.bind(this)} quoteNumber={item.id} key={item.id} value={item.text} />
     );
     return(<ul className="list-group d-none" id={this.props.id}>{listItems}</ul>)
   }
@@ -57,7 +57,7 @@ class ListItem extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(){
-    this.props.deleteQuote(this.props.number);
+    this.props.deleteQuote(this.props.quoteNumber);
   }
   render(){
     return(
