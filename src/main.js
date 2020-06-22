@@ -19,7 +19,7 @@ function saveQuote(){
         var text = { text: text};
         quotes.push(text);
         localStorage.setItem("quotes", JSON.stringify(quotes));
-
+        alert("Quote has been saved!");
     }
 }
 
