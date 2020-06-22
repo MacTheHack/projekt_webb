@@ -39,9 +39,11 @@ class CreateDisplayDiv extends React.Component {
   }
   handleDelete(number){
     console.log(number);
-    let newQuoteList = this.props.items.filter(function(quote){
-      return quote.number != number;
+    let newQuoteList = this.props.items.filter(function(item){
+      return item.id != number;
     });
+    console.log(newQuoteList);
+    this.forceUpdate();
   }
   render(){
     var listItems = (this.props.items || []).map(item =>
