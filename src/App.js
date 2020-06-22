@@ -41,7 +41,11 @@ function CreateDisplayDiv(props){
 }
 
 function ListItem(props) {
-    return <li className="list-group-item list-group-item-success">{props.value}</li>;
+    return(
+    <li className="list-group-item list-group-item-success">
+      {props.value}
+      <img src="img/delete.webp"/>
+    </li>);
 }
 
 function App() {
