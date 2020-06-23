@@ -33,41 +33,21 @@ function CreateButton(button){
     return( <button className="btn btn-info btn-block my-3" style={button.style} id={button.id}>{button.text}</button>)
 }
 
-class CreateDisplayDiv extends React.Component {
-  constructor(props){
-    super(props)
-  }
-  handleDelete(number){
-    console.log(number);
-    let newQuoteList = this.props.items.filter(function(item){
-      return item.id != number;
-    });
-    console.log(newQuoteList);
-    this.forceUpdate();
-  }
-  render(){
-    var listItems = (this.props.items || []).map(item =>
-        <ListItem deleteQuote={this.handleDelete.bind(this)} quoteNumber={item.id} key={item.id} value={item.text} />
+function CreateDisplayDiv(props){
+    const listItems = (props.items || []).map(item =>{
+        const deleteItem = () => props.deleteItem(item.id);
+        return (<ListItem key={item.id} value={item.text} deleteItem={deleteItem} />)
+    }
     );
-    return(<ul className="list-group d-none" id={this.props.id}>{listItems}</ul>)
-  }
+    return(<ul className="list-group d-none" id={props.id}>{listItems}</ul>)
 }
 
-class ListItem extends React.Component {
-  constructor(props){
-    super(props)
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick(){
-    this.props.deleteQuote(this.props.quoteNumber);
-  }
-  render(){
+function ListItem(props) {
     return(
     <li className="list-group-item list-group-item-success">
-      {this.props.value}
-      <img src="img/delete.webp" onClick={this.handleClick} width="25px"/>
+      {props.value}
+      <img src="img/delete.webp" alt="delete" width="25px" onClick={props.deleteItem}/>
     </li>);
-  }
 }
 
 function App() {
@@ -77,6 +57,17 @@ function App() {
     const updateList = () => {
         setItems(JSON.parse(reactLocalStorage.get('quotes', null)));
     };
+
+    const deleteItem = id => {
+        var it = items.filter(function(item){
+            return item.id !== id;
+        });
+
+        setItems(it);
+        localStorage.setItem('quotes', JSON.stringify(it));
+    };
+
+
 
     const showList = () => {
         var element = document.getElementById("quoteList");
@@ -94,7 +85,7 @@ function App() {
               <CreateOutsideButton style={{margin:'10px'}} id={"saveQuote"} text={"Save this quote"} onClick={updateList}/>
               <CreateOutsideButton style={{margin:'10px'}} id={"displayQuotes"} text={"Show your quotes"} onClick={showList}/>
               <div className="container mt-5">
-              <CreateDisplayDiv id={"quoteList"} items={items}/>
+              <CreateDisplayDiv id={"quoteList"} items={items} deleteItem={deleteItem}/>
               </div>
           </div>
 

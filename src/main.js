@@ -1,5 +1,6 @@
 import $ from 'jquery';
 const API_URL = "https://api.funtranslations.com/translate/pirate.json?text=";
+var id = 0;
 
 var quotes = [];
 function requestToAPI(text) {
@@ -16,7 +17,7 @@ function saveQuote(){
     var text = $("#translation").text();
     if(text.length>0){
         if(localStorage.getItem('quotes') != null) quotes =  JSON.parse(localStorage.getItem('quotes'));
-        var text = { text: text};
+        var text = { text: text, id: quotes.length+1};
         quotes.push(text);
         localStorage.setItem("quotes", JSON.stringify(quotes));
         alert("Quote has been saved!");
