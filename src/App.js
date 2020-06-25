@@ -3,52 +3,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {reactLocalStorage} from 'reactjs-localstorage';
-
-function Title(text){
-    return (<h2 className="display-4">{text.welcomeText}</h2>);
-}
-
-function LeadText(lead){
-    return (<p className="lead">{lead.text}</p>);
-}
-
-function CreateForm(){
-    return (
-        <form className="text-left">
-            <div className="form-group">
-                <label htmlFor="inputText">Text to convert:</label>
-                <textarea type="text" className="form-control" id="inputText" placeholder="Text to convert"></textarea>
-                <CreateButton id={"convert"} text={"Convert"} />
-                <div id="translation" className="border border-dark rounded p-2 d-none"></div>
-            </div>
-        </form>
-    );
-}
-
-function CreateOutsideButton(button){
-    return(<button className="btn btn-primary" style={button.style} id={button.id} onClick={button.onClick}>{button.text}</button>)
-}
-
-function CreateButton(button){
-    return( <button className="btn btn-info btn-block my-3" style={button.style} id={button.id}>{button.text}</button>)
-}
-
-function CreateDisplayDiv(props){
-    const listItems = (props.items || []).map(item =>{
-        const deleteItem = () => props.deleteItem(item.id);
-        return (<ListItem key={item.id} value={item.text} deleteItem={deleteItem} />)
-    }
-    );
-    return(<ul className="list-group d-none" id={props.id}>{listItems}</ul>)
-}
-
-function ListItem(props) {
-    return(
-    <li className="list-group-item list-group-item-success">
-      {props.value}
-      <img src="img/delete.webp" alt="delete" width="25px" onClick={props.deleteItem}/>
-    </li>);
-}
+import Title from './components/Title.js';
+import LeadText from './components/LeadText.js';
+import CreateForm from './components/CreateForm.js';
+import CreateOutsideButton from './components/CreateOutsideButton.js';
+import CreateDisplayDiv from './components/CreateDisplayDiv.js';
 
 function App() {
     var [items, setItems] = React.useState(JSON.parse(reactLocalStorage.get('quotes', null)));
